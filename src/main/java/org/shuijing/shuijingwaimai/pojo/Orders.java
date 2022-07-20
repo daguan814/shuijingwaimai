@@ -1,85 +1,82 @@
 package org.shuijing.shuijingwaimai.pojo;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.Version;
-import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * <p>
  * 订单表
  * </p>
  *
- * @author ${author}
- * @since 2022-07-18
+ * @author baomidou
+ * @since 2022-07-20
  */
-@Data
-@EqualsAndHashCode(callSuper = false)
+@Getter
+@Setter
+@TableName("orders")
+@ApiModel(value = "Orders对象", description = "订单表")
 public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    @ApiModelProperty("主键")
+    @TableId("id")
     private Long id;
 
-    /**
-     * 订单号
-     */
+    @ApiModelProperty("订单号")
+    @TableField("number")
     private String number;
 
-    /**
-     * 订单状态 1待付款，2待派送，3已派送，4已完成，5已取消
-     */
+    @ApiModelProperty("订单状态 1待付款，2待派送，3已派送，4已完成，5已取消")
+    @TableField("status")
     private Integer status;
 
-    /**
-     * 下单用户
-     */
-    private Long user_id;
+    @ApiModelProperty("下单用户")
+    @TableField("user_id")
+    private Long userId;
 
-    /**
-     * 地址id
-     */
-    private Long address_book_id;
+    @ApiModelProperty("地址id")
+    @TableField("address_book_id")
+    private Long addressBookId;
 
-    /**
-     * 下单时间
-     */
-    private LocalDateTime order_time;
+    @ApiModelProperty("下单时间")
+    @TableField("order_time")
+    private LocalDateTime orderTime;
 
-    /**
-     * 结账时间
-     */
-    private LocalDateTime checkout_time;
+    @ApiModelProperty("结账时间")
+    @TableField("checkout_time")
+    private LocalDateTime checkoutTime;
 
-    /**
-     * 支付方式 1微信,2支付宝
-     */
-    private Integer pay_method;
+    @ApiModelProperty("支付方式 1微信,2支付宝")
+    @TableField("pay_method")
+    private Integer payMethod;
 
-    /**
-     * 实收金额
-     */
+    @ApiModelProperty("实收金额")
+    @TableField("amount")
     private BigDecimal amount;
 
-    /**
-     * 备注
-     */
+    @ApiModelProperty("备注")
+    @TableField("remark")
     private String remark;
 
+    @TableField("phone")
     private String phone;
 
+    @TableField("address")
     private String address;
 
-    private String user_name;
+    @TableField("user_name")
+    private String userName;
 
+    @TableField("consignee")
     private String consignee;
 
 

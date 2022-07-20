@@ -1,67 +1,62 @@
 package org.shuijing.shuijingwaimai.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.Version;
-import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import java.time.LocalDateTime;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * <p>
  * 菜品及套餐分类
  * </p>
  *
- * @author ${author}
- * @since 2022-07-18
+ * @author baomidou
+ * @since 2022-07-20
  */
-@Data
-@EqualsAndHashCode(callSuper = false)
+@Getter
+@Setter
+@TableName("category")
+@ApiModel(value = "Category对象", description = "菜品及套餐分类")
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    @ApiModelProperty("主键")
+    @TableId("id")
     private Long id;
 
-    /**
-     * 类型   1 菜品分类 2 套餐分类
-     */
+    @ApiModelProperty("类型   1 菜品分类 2 套餐分类")
+    @TableField("type")
     private Integer type;
 
-    /**
-     * 分类名称
-     */
+    @ApiModelProperty("分类名称")
+    @TableField("name")
     private String name;
 
-    /**
-     * 顺序
-     */
+    @ApiModelProperty("顺序")
+    @TableField("sort")
     private Integer sort;
 
-    /**
-     * 创建时间
-     */
-    private LocalDateTime create_time;
+    @ApiModelProperty("创建时间")
+    @TableField("create_time")
+    private LocalDateTime createTime;
 
-    /**
-     * 更新时间
-     */
-    private LocalDateTime update_time;
+    @ApiModelProperty("更新时间")
+    @TableField("update_time")
+    private LocalDateTime updateTime;
 
-    /**
-     * 创建人
-     */
-    private Long create_user;
+    @ApiModelProperty("创建人")
+    @TableField("create_user")
+    private Long createUser;
 
-    /**
-     * 修改人
-     */
-    private Long update_user;
+    @ApiModelProperty("修改人")
+    @TableField("update_user")
+    private Long updateUser;
 
 
 }
