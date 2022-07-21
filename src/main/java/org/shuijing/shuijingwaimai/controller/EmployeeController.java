@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.ResultSet;
 
 /**
  * <p>
@@ -38,7 +39,7 @@ public class EmployeeController {
         //根据页面提交的用户名查询数据库
         LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Employee::getUsername,employee.getUsername());
-        Employee emp = employeeService.getOne(queryWrapper);
+        Employee emp = employeeService.getOne(queryWrapper);  //
 
         //如果没有查到返回登录失败
         if (emp == null) {
@@ -57,8 +58,21 @@ public class EmployeeController {
 
         //登录成功，将员工id存入session并返回登陆成功结果
         request.getSession().setAttribute("employee",emp.getId());
+
         return Result.success(emp);
 
+    }
+
+    /**
+     * 员工退出
+     * @param request
+     * @return
+     */
+    @PostMapping("/logout")
+    public Result<String> logout(HttpServletRequest request){
+        //清理Session中的员工id、
+        request.getSession().removeAttribute("employee");
+        return Result.success("退出成功");
     }
 
 

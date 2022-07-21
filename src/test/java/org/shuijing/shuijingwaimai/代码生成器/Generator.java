@@ -23,7 +23,6 @@ public class Generator {
                     builder.author("baomidou") // 设置作者
                             .enableSwagger()  //swagger 要在pom中导入
                             .outputDir("C:\\Code\\shuijingwaimai\\src\\main\\java") // 指定输出目录,到java一层就可以了
-                            .fileOverride() // 覆盖已生成文件
                             .build();
 
                 })
