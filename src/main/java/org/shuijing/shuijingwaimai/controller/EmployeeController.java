@@ -30,6 +30,12 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    /**
+     * requestbody :指的是前端传过来的
+     * @param request
+     * @param employee
+     * @return
+     */
     @PostMapping("/login")
     public Result<Employee> login(HttpServletRequest request , @RequestBody Employee employee){
         //页面提交的代码进行md5加密
@@ -75,6 +81,17 @@ public class EmployeeController {
         return Result.success("退出成功");
     }
 
+    /**
+     * 新增员工
+     * @return
+     */
+    @PostMapping
+    public Result<String> save(@RequestBody Employee employee){
+
+        System.out.println("employee "+ employee.getName());
+
+        return null;
+    }
 
 }
 
