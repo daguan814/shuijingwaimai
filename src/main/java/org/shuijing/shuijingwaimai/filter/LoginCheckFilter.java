@@ -49,8 +49,8 @@ public class LoginCheckFilter implements Filter {
                 "/backend/**",
                 "/front/**",
                 //下面是关闭这个登陆的过滤器
-                "/employee",
-                "/employee/**"
+//                "/employee",
+//                "/employee/**"
         };
 
         //判断本次请求是否需要处理

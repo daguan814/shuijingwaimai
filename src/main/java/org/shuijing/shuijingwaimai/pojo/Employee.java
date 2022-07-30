@@ -7,8 +7,10 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * <p>
@@ -20,6 +22,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
 @TableName("employee")
 @ApiModel(value = "Employee对象", description = "员工信息")
 public class Employee implements Serializable {
